@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default async function AllPosts() {
   const response = await fetch("https://jsonplaceholder.typicode.com/posts");
   const posts = await response.json();
@@ -15,6 +17,11 @@ export default async function AllPosts() {
             <p className="text-gray-600">{post.body}</p>
           </div>
         ))}
+        <Link href="/users">
+          <button className="mt-6 bg-gray-500 text-white py-2 px-4 rounded">
+            Return to Users
+          </button>
+        </Link>
       </div>
     </div>
   );

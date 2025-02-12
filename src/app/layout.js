@@ -1,3 +1,4 @@
+import { PostProvider } from "./context/PostContext";
 import "./globals.css"; // Import global styles
 
 export default function Layout({ children }) {
@@ -7,7 +8,7 @@ export default function Layout({ children }) {
         <header className="bg-gray-500 text-white p-4">
           <span className="text-3xl">PostBoard</span>
         </header>
-        <main>{children}</main>
+        <PostProvider>{children}</PostProvider>
         <footer className="bg-gray-700 text-white text-center p-4">
           <p>© 2025 Ahmed Eldaker</p>
         </footer>

@@ -1,8 +1,8 @@
-"use client";
+"use client"; // Ensure it runs on the client side
 
-import { createContext, useState, useEffect, useContext } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
-const UserPostsContext = createContext();
+const UserPostsContext = createContext(null);
 
 export function UserPostsProvider({ children }) {
   const [groupedPosts, setGroupedPosts] = useState([]);
@@ -26,7 +26,7 @@ export function UserPostsProvider({ children }) {
 
         setGroupedPosts(grouped);
       } catch (error) {
-        console.error("Failed to fetch posts", error);
+        console.error("Error fetching posts:", error);
       } finally {
         setLoading(false);
       }
@@ -43,5 +43,9 @@ export function UserPostsProvider({ children }) {
 }
 
 export function useUserPosts() {
-  return useContext(UserPostsContext);
+  const context = useContext(UserPostsContext);
+  if (!context) {
+    throw new Error("useUserPosts must be used within a UserPostsProvider");
+  }
+  return context;
 }

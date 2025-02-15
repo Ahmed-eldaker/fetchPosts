@@ -1,8 +1,10 @@
 "use client";
 
+import { usePosts } from "@/context/PostContext";
 import Link from "next/link";
 import { useState } from "react";
-import { usePosts } from "../context/PostContext";
+// import { usePosts } from "../../context/PostContext";
+// import { usePosts } from "../context/";
 
 export default function AllPosts() {
   const { posts, loading } = usePosts();
@@ -46,7 +48,9 @@ export default function AllPosts() {
           <button
             onClick={() => setCurrentPage((prev) => prev + 1)}
             disabled={currentPage * postsPerPage >= posts.length}
-            className="bg-gray-500 text-white py-2 px-4 rounded"
+            className={`py-2 px-4 rounded ${
+              currentPage === 10 ? "bg-gray-300" : "bg-gray-500 text-white"
+            }`}
           >
             Next
           </button>

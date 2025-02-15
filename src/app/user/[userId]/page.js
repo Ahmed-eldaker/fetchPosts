@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useUserPosts } from "../../context/UsersContext";
+import { useUserPosts } from "@/context/UsersContext";
 import { useParams } from "next/navigation";
 
 export default function UserPosts() {
@@ -34,11 +34,13 @@ export default function UserPosts() {
         ))}
       </div>
 
-      <Link href="/allusers">
-        <button className="mt-6 bg-gray-500 text-white py-2 px-4 rounded">
-          Return to Users
-        </button>
-      </Link>
+      <div className="flex justify-center mt-6">
+        <Link href="/users">
+          <button className="bg-gray-500 text-white py-2 px-4 rounded">
+            Return to Users
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }
